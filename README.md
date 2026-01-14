@@ -119,6 +119,14 @@ pip install -r requirements.txt
 # 4. (Optional) Build Cython extensions for darkflow
 python setup.py build_ext --inplace
 ```
+### Download YOLO Weights
+
+For the original darkflow-based vehicle detection, download the YOLOv2 weights:
+
+1. Download `yolov2.weights` from [Google Drive](https://drive.google.com/file/d/1_ytc7qnQbvXrbCXsdK8lkYZFAqJWHGU_/view?usp=sharing)
+2. Place it in `Code/YOLO/darkflow/bin/` directory
+
+> **Note:** The YOLOv8 model (`yolov8n.pt`) is already included and works out of the box with `vehicle_detection_v8.py`.
 
 ### Quick Start
 
