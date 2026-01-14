@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SUMO GUI Settings - Zoomed in view centered on intersection -->
+<viewsettings>
+    <viewport x="0" y="0" zoom="800"/>
+    <delay value="50"/>
+    <scheme name="real world"/>
+</viewsettings>

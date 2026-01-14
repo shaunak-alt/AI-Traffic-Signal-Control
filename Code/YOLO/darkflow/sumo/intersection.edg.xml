@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 8 edges: 4 incoming, 4 outgoing. 3 lanes each (lane 0=bike, lanes 1-2=vehicles) -->
+<edges xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/edges_file.xsd">
+    <!-- Incoming edges (map to Pygame directions: right=W, down=N, left=E, up=S) -->
+    <edge id="WC" from="W" to="C" numLanes="3" speed="13.89"/>  <!-- right (direction 0) -->
+    <edge id="NC" from="N" to="C" numLanes="3" speed="13.89"/>  <!-- down (direction 1) -->
+    <edge id="EC" from="E" to="C" numLanes="3" speed="13.89"/>  <!-- left (direction 2) -->
+    <edge id="SC" from="S" to="C" numLanes="3" speed="13.89"/>  <!-- up (direction 3) -->
+    
+    <!-- Outgoing edges -->
+    <edge id="CE" from="C" to="E" numLanes="3" speed="13.89"/>
+    <edge id="CS" from="C" to="S" numLanes="3" speed="13.89"/>
+    <edge id="CW" from="C" to="W" numLanes="3" speed="13.89"/>
+    <edge id="CN" from="C" to="N" numLanes="3" speed="13.89"/>
+</edges>

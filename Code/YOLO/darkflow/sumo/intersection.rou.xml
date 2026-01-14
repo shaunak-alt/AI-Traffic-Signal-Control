@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Vehicle types and flows matching Pygame generateVehicles() exactly:
+- Spawn rate: 1 vehicle per 0.75s = probability ~0.75 per second total
+- Direction: 40% right(W), 40% down(N), 10% left(E), 10% up(S)
+- Types: 20% each (car, bus, truck, rickshaw, bike)
+- Lane: bikes→lane 0, others→lanes 1-2
+- Lane 2: 60% turn probability (handled by SUMO connections)
+-->
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
+    
+    <!-- Vehicle types matching Pygame speeds dict -->
+    <vType id="car" length="4.5" minGap="2.5" maxSpeed="11.25" color="1,0,0"/>
+    <vType id="bus" length="12.0" minGap="3.0" maxSpeed="9.0" color="0,0,1"/>
+    <vType id="truck" length="10.0" minGap="3.0" maxSpeed="9.0" color="0.5,0.5,0"/>
+    <vType id="rickshaw" length="3.0" minGap="2.0" maxSpeed="10.0" color="0,1,0"/>
+    <vType id="bike" length="2.0" minGap="1.5" maxSpeed="12.5" color="1,0.5,0" vClass="bicycle"/>
+    
+    <!-- Routes: straight and turn for each direction -->
+    <route id="W_straight" edges="WC CE"/>
+    <route id="W_turn" edges="WC CS"/>
+    <route id="N_straight" edges="NC CS"/>
+    <route id="N_turn" edges="NC CW"/>
+    <route id="E_straight" edges="EC CW"/>
+    <route id="E_turn" edges="EC CN"/>
+    <route id="S_straight" edges="SC CN"/>
+    <route id="S_turn" edges="SC CE"/>
+    
+    <!--
+    Flow probabilities derived from Pygame:
+    - Total: ~1.33 veh/s (1 per 0.75s)
+    - Per direction: W=40%, N=40%, E=10%, S=10%
+    - Per type: 20% each
+    - Per direction per type: 0.4*0.2=0.08 for W/N, 0.1*0.2=0.02 for E/S
+    -->
+    
+    <!-- West (direction 0 = 'right'): 40% of traffic -->
+    <flow id="W_car" type="car" route="W_straight" begin="0" end="300" probability="0.064" departLane="random" departSpeed="max"/>
+    <flow id="W_car_turn" type="car" route="W_turn" begin="0" end="300" probability="0.016" departLane="2" departSpeed="max"/>
+    <flow id="W_bus" type="bus" route="W_straight" begin="0" end="300" probability="0.064" departLane="random" departSpeed="max"/>
+    <flow id="W_bus_turn" type="bus" route="W_turn" begin="0" end="300" probability="0.016" departLane="2" departSpeed="max"/>
+    <flow id="W_truck" type="truck" route="W_straight" begin="0" end="300" probability="0.064" departLane="random" departSpeed="max"/>
+    <flow id="W_truck_turn" type="truck" route="W_turn" begin="0" end="300" probability="0.016" departLane="2" departSpeed="max"/>
+    <flow id="W_rickshaw" type="rickshaw" route="W_straight" begin="0" end="300" probability="0.064" departLane="random" departSpeed="max"/>
+    <flow id="W_rickshaw_turn" type="rickshaw" route="W_turn" begin="0" end="300" probability="0.016" departLane="2" departSpeed="max"/>
+    <flow id="W_bike" type="bike" route="W_straight" begin="0" end="300" probability="0.08" departLane="0" departSpeed="max"/>
+    
+    <!-- North (direction 1 = 'down'): 40% of traffic -->
+    <flow id="N_car" type="car" route="N_straight" begin="0" end="300" probability="0.064" departLane="random" departSpeed="max"/>
+    <flow id="N_car_turn" type="car" route="N_turn" begin="0" end="300" probability="0.016" departLane="2" departSpeed="max"/>
+    <flow id="N_bus" type="bus" route="N_straight" begin="0" end="300" probability="0.064" departLane="random" departSpeed="max"/>
+    <flow id="N_bus_turn" type="bus" route="N_turn" begin="0" end="300" probability="0.016" departLane="2" departSpeed="max"/>
+    <flow id="N_truck" type="truck" route="N_straight" begin="0" end="300" probability="0.064" departLane="random" departSpeed="max"/>
+    <flow id="N_truck_turn" type="truck" route="N_turn" begin="0" end="300" probability="0.016" departLane="2" departSpeed="max"/>
+    <flow id="N_rickshaw" type="rickshaw" route="N_straight" begin="0" end="300" probability="0.064" departLane="random" departSpeed="max"/>
+    <flow id="N_rickshaw_turn" type="rickshaw" route="N_turn" begin="0" end="300" probability="0.016" departLane="2" departSpeed="max"/>
+    <flow id="N_bike" type="bike" route="N_straight" begin="0" end="300" probability="0.08" departLane="0" departSpeed="max"/>
+    
+    <!-- East (direction 2 = 'left'): 10% of traffic -->
+    <flow id="E_car" type="car" route="E_straight" begin="0" end="300" probability="0.016" departLane="random" departSpeed="max"/>
+    <flow id="E_car_turn" type="car" route="E_turn" begin="0" end="300" probability="0.004" departLane="2" departSpeed="max"/>
+    <flow id="E_bus" type="bus" route="E_straight" begin="0" end="300" probability="0.016" departLane="random" departSpeed="max"/>
+    <flow id="E_bus_turn" type="bus" route="E_turn" begin="0" end="300" probability="0.004" departLane="2" departSpeed="max"/>
+    <flow id="E_truck" type="truck" route="E_straight" begin="0" end="300" probability="0.016" departLane="random" departSpeed="max"/>
+    <flow id="E_truck_turn" type="truck" route="E_turn" begin="0" end="300" probability="0.004" departLane="2" departSpeed="max"/>
+    <flow id="E_rickshaw" type="rickshaw" route="E_straight" begin="0" end="300" probability="0.016" departLane="random" departSpeed="max"/>
+    <flow id="E_rickshaw_turn" type="rickshaw" route="E_turn" begin="0" end="300" probability="0.004" departLane="2" departSpeed="max"/>
+    <flow id="E_bike" type="bike" route="E_straight" begin="0" end="300" probability="0.02" departLane="0" departSpeed="max"/>
+    
+    <!-- South (direction 3 = 'up'): 10% of traffic -->
+    <flow id="S_car" type="car" route="S_straight" begin="0" end="300" probability="0.016" departLane="random" departSpeed="max"/>
+    <flow id="S_car_turn" type="car" route="S_turn" begin="0" end="300" probability="0.004" departLane="2" departSpeed="max"/>
+    <flow id="S_bus" type="bus" route="S_straight" begin="0" end="300" probability="0.016" departLane="random" departSpeed="max"/>
+    <flow id="S_bus_turn" type="bus" route="S_turn" begin="0" end="300" probability="0.004" departLane="2" departSpeed="max"/>
+    <flow id="S_truck" type="truck" route="S_straight" begin="0" end="300" probability="0.016" departLane="random" departSpeed="max"/>
+    <flow id="S_truck_turn" type="truck" route="S_turn" begin="0" end="300" probability="0.004" departLane="2" departSpeed="max"/>
+    <flow id="S_rickshaw" type="rickshaw" route="S_straight" begin="0" end="300" probability="0.016" departLane="random" departSpeed="max"/>
+    <flow id="S_rickshaw_turn" type="rickshaw" route="S_turn" begin="0" end="300" probability="0.004" departLane="2" departSpeed="max"/>
+    <flow id="S_bike" type="bike" route="S_straight" begin="0" end="300" probability="0.02" departLane="0" departSpeed="max"/>
+</routes>

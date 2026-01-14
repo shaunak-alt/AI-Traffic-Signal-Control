@@ -1,0 +1,57 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.pyd
+
+# Distribution / packaging
+build/
+dist/
+eggs/
+*.egg-info/
+*.egg
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+pip-install.log
+
+# Environments
+.conda/
+.env/
+.venv/
+env/
+venv/
+ENV/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Project-specific
+*.zip
+output_images/
+results/
+
+# Keep weight files but ignore large intermediate checkpoints
+# checkpoints/*_ep*.pt  # Uncomment to ignore intermediate checkpoints
+
+# TensorFlow / PyTorch
+*.pb
+summary/
+built_graph/
+ckpt/
+
+# Large weight files (download separately per README)
+bin/*.weights
+
+# Testing
+.cache/
+.pytest_cache/

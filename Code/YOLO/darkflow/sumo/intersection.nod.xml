@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 4-way intersection: center junction + 4 entry/exit points -->
+<nodes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/nodes_file.xsd">
+    <node id="C" x="0" y="0" type="traffic_light"/>
+    <node id="N" x="0" y="200" type="priority"/>
+    <node id="S" x="0" y="-200" type="priority"/>
+    <node id="E" x="200" y="0" type="priority"/>
+    <node id="W" x="-200" y="0" type="priority"/>
+</nodes>
