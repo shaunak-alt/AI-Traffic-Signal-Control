@@ -1,7 +1,3 @@
-<p align="center">
-  <img src="Demo.gif" alt="AI Traffic Signal Control Demo" width="700">
-</p>
-
 <h1 align="center">🚦 AI-Powered Adaptive Traffic Signal Control</h1>
 
 <p align="center">
